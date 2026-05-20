@@ -3,7 +3,6 @@
 Operational intelligence and reviewer workflow platform for distributed lead and operations management.
 
 > **Positioning:** Enterprise-grade operational visibility — turning fragmented activity into accountable, standardized, AI-assisted operational decisions.
-
 ---
 
 ## Overview
@@ -37,13 +36,17 @@ A reviewer-and-analytics layer that routes work intelligently, standardizes revi
 
 ## Architecture
 
-> _Insert architecture diagrams in `docs/` and reference them here._
+See [`docs/architecture.md`](docs/architecture.md) for full system, reviewer workflow, and multi-market scaling diagrams.
 
-```
-[ Lead / Activity Intake ] -> [ Workflow Routing ] -> [ Reviewer System ]
-                                      |                       |
-                                      v                       v
-                          [ AI-Assisted Analysis ] -> [ Operational Dashboards ]
+```mermaid
+flowchart LR
+    A[Lead / Activity Sources] --> B[Ingestion Layer]
+    B --> C{Workflow Router}
+    C --> D[Reviewer Cockpit]
+    C --> E[AI-Assisted Analysis]
+    D --> F[Operational Data Store]
+    E --> F
+    F --> G[Analytics & Dashboards]
 ```
 
 ## Workflow Example
@@ -63,7 +66,18 @@ A reviewer-and-analytics layer that routes work intelligently, standardizes revi
 
 ## Screenshots
 
-> _Add dashboards, workflow maps, reviewer routing diagrams, and operational pipelines here._
+Reviewer cockpit and multi-market rollup visualizations are maintained as Mermaid diagrams in [`docs/architecture.md`](docs/architecture.md). Example: multi-market scaling.
+
+```mermaid
+flowchart TB
+    HQ[HQ / Central Operations] --> M1[Market 1 Reviewers]
+    HQ --> M2[Market 2 Reviewers]
+    HQ --> M3[Market 3 Reviewers]
+    M1 --> Roll[Cross-Market Rollup]
+    M2 --> Roll
+    M3 --> Roll
+    Roll --> Exec[Executive Dashboard]
+```
 
 ## Lessons Learned
 
